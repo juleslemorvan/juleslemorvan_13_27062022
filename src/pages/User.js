@@ -1,47 +1,48 @@
 import React from 'react'
+import logo from "../assets/images/argentBankLogo.png"
 
 const User = () => {
   return (
     <div>
-         <nav class="main-nav">
-      <a class="main-nav-logo" href="./index.html">
+         <nav className="main-nav">
+      <a className="main-nav-logo" href="./index.html">
         <img
-          class="main-nav-logo-image"
-          src="./img/argentBankLogo.png"
+          className="main-nav-logo-image"
+          src={logo}
           alt="Argent Bank Logo"
         />
-        <h1 class="sr-only">Argent Bank</h1>
+        <h1 className="sr-only">Argent Bank</h1>
       </a>
       <div>
-        <a class="main-nav-item" href="./user.html">
-          <i class="fa fa-user-circle"></i>
+        <a className="main-nav-item" href="./user.html">
+          <i className="fa fa-user-circle"></i>
           Tony
         </a>
-        <a class="main-nav-item" href="./index.html">
-          <i class="fa fa-sign-out"></i>
+        <a className="main-nav-item" href="./index.html">
+          <i className="fa fa-sign-out"></i>
           Sign Out
         </a>
       </div>
     </nav>
-    <main class="main bg-dark">
-      <div class="header">
+    <main className="main bg-dark">
+      <div className="header">
         <h1>Welcome back<br />Tony Jarvis!</h1>
-        <button class="edit-button">Edit Name</button>
+        <button className="edit-button">Edit Name</button>
       </div>
-      <h2 class="sr-only">Accounts</h2>
-      <section class="account">
-        <div class="account-content-wrapper">
-          <h3 class="account-title">Argent Bank Checking (x8349)</h3>
-          <p class="account-amount">$2,082.79</p>
-          <p class="account-amount-description">Available Balance</p>
+      <h2 className="sr-only">Accounts</h2>
+      <section className="account">
+        <div className="account-content-wrapper">
+          <h3 className="account-title">Argent Bank Checking (x8349)</h3>
+          <p className="account-amount">$2,082.79</p>
+          <p className="account-amount-description">Available Balance</p>
         </div>
-        <div class="account-content-wrapper cta">
-          <button class="transaction-button">View transactions</button>
+        <div className="account-content-wrapper cta">
+          <button className="transaction-button">View transactions</button>
         </div>
       </section>
-      <section class="account">
-        <div class="account-content-wrapper">
-          <h3 class="account-title">Argent Bank Savings (x6712)</h3>
+      <section className="account">
+        <div className="account-content-wrapper">
+          <h3 className="account-title">Argent Bank Savings (x6712)</h3>
           <p class="account-amount">$10,928.42</p>
           <p class="account-amount-description">Available Balance</p>
         </div>
