@@ -51,6 +51,12 @@ body {
   padding: 5px 20px;
 }
 
+.nav-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .main-nav a {
   font-weight: bold;
   color: #2c3e50;
@@ -190,9 +196,13 @@ body {
   padding: 2rem;
 }
 
-/* .sign-in-icon {
+.fa-user-circle{
+  font-size: 2rem;
+}
+
+ .sign-in-icon {
   font-size: 5rem;
-} */
+} 
 
 .input-remember {
   display: flex;
