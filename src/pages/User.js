@@ -1,8 +1,18 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getUserInfo } from "../actions/userActions";
 import logo from "../assets/images/argentBankLogo.png";
 
 const User = () => {
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+
+  useEffect(() => {
+    dispatch(getUserInfo(userLogin?.userInfo?.body?.token));
+  }, []);
+
   return (
     <div>
       <nav className="main-nav">
@@ -15,14 +25,14 @@ const User = () => {
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
         <div>
-          <a className="main-nav-item" href="./user.html">
+          <Link className="main-nav-item" to="./user.html">
             <i className="fa fa-user-circle"></i>
             Tony
-          </a>
-          <a className="main-nav-item" href="./index.html">
+          </Link>
+          <Link className="main-nav-item" to="/">
             <i className="fa fa-sign-out"></i>
             Sign Out
-          </a>
+          </Link>
         </div>
       </nav>
       <main className="main bg-dark">

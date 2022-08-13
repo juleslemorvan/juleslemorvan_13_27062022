@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userActions";
 import Navbar from "../components/Navbar";
+import Spinner from "../components/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userLogin?.userInfo?.body?.token) {
+      navigate("/account");
+    }
+  }, [userLogin, navigate]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +24,6 @@ const SignIn = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
-    console.log(email, password);
   };
 
   return (
@@ -24,9 +33,13 @@ const SignIn = () => {
         <section className="sign-in-content">
           <i className="fa fa-user-circle sign-in-icon"></i>
           <h1>Sign In</h1>
-          {userLogin.error ? <p>{userLogin.error.message}</p> : <div></div>}
-          {userLogin.isLoading ? (
-            <p>loading</p>
+          {userLogin?.error ? (
+            <p className="error-message">{userLogin?.error?.message}</p>
+          ) : (
+            <div></div>
+          )}
+          {userLogin?.isLoading ? (
+            <Spinner />
           ) : (
             <form>
               <div className="input-wrapper">

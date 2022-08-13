@@ -19,18 +19,18 @@ export const userLoginReducer = (state = {}, action) => {
   }
 };
 
-export const userRegisterReducer = (state = {}, action) => {
+export const userInfosReducer = (state = {}, action) => {
   switch (action.type) {
-    case "USER_REGISTER_REQUEST":
+    case "GET_USERINFOS_REQUEST":
       return {
         isLoading: true,
       };
-    case "USER_REGISTER_SUCCESS":
+    case "GET_USERINFOS_SUCCESS":
       return {
         isLoading: false,
-        userInfo: action.payload,
+        userInfos: action.payload,
       };
-    case "USER_REGISTER_FAIL":
+    case "GET_USERINFOS_FAIL":
       return {
         isLoading: false,
         error: action.payload,
