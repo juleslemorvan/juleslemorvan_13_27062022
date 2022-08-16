@@ -17,6 +17,14 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: "USER_LOGIN_FAIL", payload: error.response.data });
   }
 };
+export const logOut = () => async (dispatch) => {
+  try {
+    dispatch({ type: "USER_LOGOUT_SUCCESS" });
+    localStorage.clear();
+  } catch (error) {
+    dispatch({ type: "USER_LOGOUT_FAIL", payload: error.response.data });
+  }
+};
 
 export const getUserInfo = (token) => async (dispatch) => {
   try {

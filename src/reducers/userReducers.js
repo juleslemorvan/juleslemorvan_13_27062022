@@ -18,6 +18,22 @@ export const userLoginReducer = (state = {}, action) => {
       return state;
   }
 };
+export const userLogoutReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "USER_LOGOUT_SUCCESS":
+      return {
+        isLoading: false,
+        userInfo: {},
+      };
+    case "USER_LOGOUT_FAIL":
+      return {
+        isLoading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 export const userInfosReducer = (state = {}, action) => {
   switch (action.type) {

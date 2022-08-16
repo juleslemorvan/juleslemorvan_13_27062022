@@ -186,6 +186,18 @@ body {
   background-color: #00bc77;
   color: #fff;
 }
+.sign-out-button{
+  display: flex;
+    width: 100%;
+    padding: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+.user-info-container{
+  display: flex;
+  align-items: center;
+}
 
 .sign-in-content {
   box-sizing: border-box;

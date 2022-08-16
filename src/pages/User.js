@@ -2,16 +2,27 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUserInfo } from "../actions/userActions";
+import { getUserInfo, logOut } from "../actions/userActions";
 import logo from "../assets/images/argentBankLogo.png";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
+  const Navigate = useNavigate();
+
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
+  const userInfo = useSelector((state) => state.userInfos);
 
   useEffect(() => {
     dispatch(getUserInfo(userLogin?.userInfo?.body?.token));
+    console.log(userInfo?.userInfos?.body?.email);
   }, []);
+
+  const handlLogOut = (e) => {
+    e.preventDefault();
+    dispatch(logOut());
+    Navigate("/");
+  };
 
   return (
     <div>
@@ -24,14 +35,16 @@ const User = () => {
           />
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
-        <div>
+        <div className="user-info-container">
           <Link className="main-nav-item" to="./user.html">
             <i className="fa fa-user-circle"></i>
-            Tony
+            {userInfo?.userInfos?.body?.firstName}
           </Link>
           <Link className="main-nav-item" to="/">
-            <i className="fa fa-sign-out"></i>
-            Sign Out
+            <button className="sign-out-button" onClick={handlLogOut}>
+              <i className="fa fa-sign-out"></i>
+              Sign Out
+            </button>
           </Link>
         </div>
       </nav>
@@ -40,7 +53,8 @@ const User = () => {
           <h1>
             Welcome back
             <br />
-            Tony Jarvis!
+            {userInfo?.userInfos?.body?.firstName}{" "}
+            {userInfo?.userInfos?.body?.lastName}
           </h1>
           <button className="edit-button">Edit Name</button>
         </div>
