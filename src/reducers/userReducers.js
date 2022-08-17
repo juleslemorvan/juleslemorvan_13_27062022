@@ -23,7 +23,7 @@ export const userLogoutReducer = (state = {}, action) => {
     case "USER_LOGOUT_SUCCESS":
       return {
         isLoading: false,
-        userInfo: {},
+        userInfos: null,
       };
     case "USER_LOGOUT_FAIL":
       return {

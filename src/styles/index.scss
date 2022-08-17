@@ -362,3 +362,34 @@ body {
     transform: rotate(360deg);
   }
 }
+
+//updateUserInfoForm
+
+
+
+.updateUserInfosContainer{
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+}
+
+.firstName{
+      padding: 10px;
+        margin-right: 10px;
+        font-size: 15px;
+}
+.lastName {
+  padding: 10px;
+    margin-right: 10px;
+}
+
+.updateFormSubmit{
+  background-color:#00BC77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    font-size: 15px;
+}

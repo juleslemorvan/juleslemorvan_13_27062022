@@ -1,12 +1,19 @@
 import React from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getUserInfo, logOut } from "../actions/userActions";
 import logo from "../assets/images/argentBankLogo.png";
 import { useNavigate } from "react-router-dom";
+import UpdateForm from "../components/UpdateForm";
 
 const User = () => {
+  const [updateForm, setUpdateForm] = useState(false);
+
+  const toggleForm = () => {
+    setUpdateForm(!updateForm);
+  };
+
   const Navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -15,13 +22,13 @@ const User = () => {
 
   useEffect(() => {
     dispatch(getUserInfo(userLogin?.userInfo?.body?.token));
-    console.log(userInfo?.userInfos?.body?.email);
   }, []);
 
   const handlLogOut = (e) => {
     e.preventDefault();
     dispatch(logOut());
     Navigate("/");
+    // comment navigate et suppr le token sans rechargement de page ?
   };
 
   return (
@@ -56,7 +63,13 @@ const User = () => {
             {userInfo?.userInfos?.body?.firstName}{" "}
             {userInfo?.userInfos?.body?.lastName}
           </h1>
-          <button className="edit-button">Edit Name</button>
+          {updateForm ? (
+            <UpdateForm />
+          ) : (
+            <button className="edit-button" onClick={toggleForm}>
+              Edit Name
+            </button>
+          )}
         </div>
         <h2 className="sr-only">Accounts</h2>
         <section className="account">
