@@ -19,10 +19,10 @@ export const login = (email, password) => async (dispatch) => {
 };
 export const logOut = () => async (dispatch) => {
   try {
-    dispatch({ type: "USER_LOGOUT_SUCCESS" });
+    dispatch({ type: "USER_LOGOUT" });
     localStorage.clear();
   } catch (error) {
-    dispatch({ type: "USER_LOGOUT_FAIL", payload: error.response.data });
+    dispatch({ type: "USER_LOGOUT_FAIL", payload: null });
   }
 };
 
@@ -43,6 +43,28 @@ export const getUserInfo = (token) => async (dispatch) => {
       config
     );
     dispatch({ type: "GET_USERINFOS_SUCCESS", payload: data });
+  } catch (error) {
+    dispatch({ type: "GET_USERINFOS_FAIL", payload: error.response.data });
+  }
+};
+
+export const updateUserInfos = (token) => async (dispatch) => {
+  try {
+    dispatch({ type: "UPDATE_USERINFOS_REQUEST" });
+    // config = transmet le type de donnée envoyé
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    // route/donnée/config
+    const { data } = await axios.put(
+      "http://localhost:3001/api/v1/user/profile",
+      { token },
+      config
+    );
+    dispatch({ type: "UPDATE_USERINFOS_SUCCESS", payload: data });
   } catch (error) {
     dispatch({ type: "GET_USERINFOS_FAIL", payload: error.response.data });
   }

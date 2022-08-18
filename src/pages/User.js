@@ -28,7 +28,6 @@ const User = () => {
     e.preventDefault();
     dispatch(logOut());
     Navigate("/");
-    // comment navigate et suppr le token sans rechargement de page ?
   };
 
   return (

@@ -9,21 +9,10 @@ export const userLoginReducer = (state = {}, action) => {
         isLoading: false,
         userInfo: action.payload,
       };
-    case "USER_LOGIN_FAIL":
+    case "USER_LOGOUT":
       return {
         isLoading: false,
-        error: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-export const userLogoutReducer = (state = {}, action) => {
-  switch (action.type) {
-    case "USER_LOGOUT_SUCCESS":
-      return {
-        isLoading: false,
-        userInfos: null,
+        userInfo: null,
       };
     case "USER_LOGOUT_FAIL":
       return {
@@ -34,6 +23,22 @@ export const userLogoutReducer = (state = {}, action) => {
       return state;
   }
 };
+// export const userLogoutReducer = (state = {}, action) => {
+//   switch (action.type) {
+//     case "USER_LOGOUT_SUCCESS":
+//       return {
+//         isLoading: false,
+//         userInfos: null,
+//       };
+//     case "USER_LOGOUT_FAIL":
+//       return {
+//         isLoading: false,
+//         error: action.payload,
+//       };
+//     default:
+//       return state;
+//   }
+// };
 
 export const userInfosReducer = (state = {}, action) => {
   switch (action.type) {
@@ -45,6 +50,15 @@ export const userInfosReducer = (state = {}, action) => {
       return {
         isLoading: false,
         userInfos: action.payload,
+      };
+    case "UPDATE_USERINFOS_REQUEST":
+      return {
+        isLoading: true,
+      };
+    case "UPDATE_USERINFOS_SUCCESS":
+      return {
+        isLoading: false,
+        error: action.payload,
       };
     case "GET_USERINFOS_FAIL":
       return {
