@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "../actions/userActions";
+import { getUserInfo, updateUserInfos } from "../actions/userActions";
 
 const UpdateForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
   const dispatch = useDispatch();
+
   const userLogin = useSelector((state) => state.userLogin);
   const userInfo = useSelector((state) => state.userInfos);
 
@@ -14,14 +15,20 @@ const UpdateForm = () => {
     dispatch(getUserInfo(userLogin?.userInfo?.body?.token));
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateUserInfos());
+  };
+
   return (
-    <form className="updateUserInfosForm" action="">
+    <form className="updateUserInfosForm" onSubmit={handleSubmit}>
       <div className="updateUserInfosContainer">
         <div className="firstNameContainer">
           <label htmlFor=""></label>
           <input
-            className="firstName"
             value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="firstName"
             type="text"
             placeholder={userInfo?.userInfos?.body?.firstName}
           />
@@ -29,8 +36,9 @@ const UpdateForm = () => {
         <div className="lastNameContainer">
           <label htmlFor=""></label>
           <input
-            className="lastName"
             value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="lastName"
             type="text"
             placeholder={userInfo?.userInfos?.body?.lastName}
           />
