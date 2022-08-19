@@ -1,5 +1,5 @@
 import axios from "axios";
-import { firstName, lastName } from "../components/UpdateForm";
+import UpdateForm from "../components/UpdateForm";
 
 export const login = (email, password) => async (dispatch) => {
   try {
