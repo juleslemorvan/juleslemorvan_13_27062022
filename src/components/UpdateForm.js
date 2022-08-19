@@ -17,7 +17,7 @@ const UpdateForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUserInfos());
+    dispatch(updateUserInfos(firstName, lastName));
   };
 
   return (

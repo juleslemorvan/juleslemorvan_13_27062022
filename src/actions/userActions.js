@@ -1,4 +1,5 @@
 import axios from "axios";
+import { firstName, lastName } from "../components/UpdateForm";
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -61,7 +62,7 @@ export const updateUserInfos = (token) => async (dispatch) => {
     // route/donnée/config
     const { data } = await axios.put(
       "http://localhost:3001/api/v1/user/profile",
-      { token },
+      { firstName, lastName },
       config
     );
     dispatch({ type: "UPDATE_USERINFOS_SUCCESS", payload: data });
