@@ -3,17 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo, updateUserInfos } from "../actions/userActions";
 
 const UpdateForm = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
   const userInfo = useSelector((state) => state.userInfos);
 
+  const [firstName, setFirstName] = useState(
+    userInfo?.userInfos?.body?.firstName
+  );
+  const [lastName, setLastName] = useState(userInfo?.userInfos?.body?.lastName);
+
   useEffect(() => {
     dispatch(getUserInfo(userLogin?.userInfo?.body?.token));
-  }, []);
+  }, [dispatch, userLogin]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

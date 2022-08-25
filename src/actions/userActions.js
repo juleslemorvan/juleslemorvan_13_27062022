@@ -7,17 +7,19 @@ export const login = (email, password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
     // route/donnée/config
     const { data } = await axios.post(
-      "http://localhost:3001/api/v1/user/login",
+      "/api/v1/user/login",
       { email, password },
       config
     );
     dispatch({ type: "USER_LOGIN_SUCCESS", payload: data });
-    localStorage.setItem("userLogin", JSON.stringify(data));
+    localStorage.setItem("userData", JSON.stringify(data));
+    // pour stocker, obligation d'avoir une string
   } catch (error) {
     dispatch({ type: "USER_LOGIN_FAIL", payload: error.response.data });
   }
 };
-export const logOut = () => async (dispatch) => {
+
+export const logOut = () => (dispatch) => {
   try {
     dispatch({ type: "USER_LOGOUT" });
     localStorage.clear();
@@ -37,11 +39,7 @@ export const getUserInfo = (token) => async (dispatch) => {
       },
     };
     // route/donnée/config
-    const { data } = await axios.post(
-      "http://localhost:3001/api/v1/user/profile",
-      { token },
-      config
-    );
+    const { data } = await axios.post("/api/v1/user/profile", {}, config);
     dispatch({ type: "GET_USERINFOS_SUCCESS", payload: data });
   } catch (error) {
     dispatch({ type: "GET_USERINFOS_FAIL", payload: error.response.data });
@@ -61,8 +59,8 @@ export const updateUserInfos =
       };
       // route/donnée/config
       const { data } = await axios.put(
-        "http://localhost:3001/api/v1/user/profile",
-        { firstName: firstName, lastName: lastName },
+        "/api/v1/user/profile",
+        { firstName, lastName },
         config
       );
       dispatch({ type: "UPDATE_USERINFOS_SUCCESS", payload: data });

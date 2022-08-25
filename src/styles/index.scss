@@ -1,6 +1,5 @@
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -51,7 +50,7 @@ body {
   padding: 5px 20px;
 }
 
-.nav-container{
+.nav-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +85,7 @@ body {
 }
 
 .hero {
-  background-image: url('../assets//images/bank-tree.jpeg');
+  background-image: url("../assets//images/bank-tree.jpeg");
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -168,7 +167,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.sign-in-container{
+.sign-in-container {
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -186,15 +185,15 @@ body {
   background-color: #00bc77;
   color: #fff;
 }
-.sign-out-button{
+.sign-out-button {
   display: flex;
-    width: 100%;
-    padding: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 1rem;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
 }
-.user-info-container{
+.user-info-container {
   display: flex;
   align-items: center;
 }
@@ -208,13 +207,13 @@ body {
   padding: 2rem;
 }
 
-.fa-user-circle{
+.fa-user-circle {
   font-size: 2rem;
 }
 
- .sign-in-icon {
+.sign-in-icon {
   font-size: 5rem;
-} 
+}
 
 .input-remember {
   display: flex;
@@ -240,7 +239,7 @@ body {
   font-size: 1.2rem;
 }
 
-.error-message{
+.error-message {
   color: red;
 }
 
@@ -332,7 +331,6 @@ body {
   }
 }
 
-
 //spinner
 
 .lds-dual-ring {
@@ -365,31 +363,29 @@ body {
 
 //updateUserInfoForm
 
-
-
-.updateUserInfosContainer{
+.updateUserInfosContainer {
   display: flex;
   align-items: center;
 
   justify-content: center;
 }
 
-.firstName{
-      padding: 10px;
-        margin-right: 10px;
-        font-size: 15px;
+.firstName {
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 15px;
 }
 .lastName {
   padding: 10px;
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
-.updateFormSubmit{
-  background-color:#00BC77;
+.updateFormSubmit {
+  background-color: #00bc77;
   color: #fff;
   font-weight: bold;
   padding: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
-    font-size: 15px;
+  margin-right: 10px;
+  margin-top: 20px;
+  font-size: 15px;
 }

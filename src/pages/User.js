@@ -1,11 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getUserInfo, logOut } from "../actions/userActions";
-import logo from "../assets/images/argentBankLogo.png";
-import { useNavigate } from "react-router-dom";
+import { getUserInfo } from "../actions/userActions";
 import UpdateForm from "../components/UpdateForm";
+import Navbar from "../components/Navbar";
 
 const User = () => {
   const [updateForm, setUpdateForm] = useState(false);
@@ -14,46 +12,17 @@ const User = () => {
     setUpdateForm(!updateForm);
   };
 
-  const Navigate = useNavigate();
-
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const userInfo = useSelector((state) => state.userInfos);
 
   useEffect(() => {
     dispatch(getUserInfo(userLogin?.userInfo?.body?.token));
-  }, []);
-
-  const handlLogOut = (e) => {
-    e.preventDefault();
-    dispatch(logOut());
-    Navigate("/");
-  };
+  }, [dispatch, userLogin]);
 
   return (
     <div>
-      <nav className="main-nav">
-        <Link className="main-nav-logo" to="/">
-          <img
-            className="main-nav-logo-image"
-            src={logo}
-            alt="Argent Bank Logo"
-          />
-          <h1 className="sr-only">Argent Bank</h1>
-        </Link>
-        <div className="user-info-container">
-          <Link className="main-nav-item" to="./user.html">
-            <i className="fa fa-user-circle"></i>
-            {userInfo?.userInfos?.body?.firstName}
-          </Link>
-          <Link className="main-nav-item" to="/">
-            <button className="sign-out-button" onClick={handlLogOut}>
-              <i className="fa fa-sign-out"></i>
-              Sign Out
-            </button>
-          </Link>
-        </div>
-      </nav>
+      <Navbar />
       <main className="main bg-dark">
         <div className="header">
           <h1>

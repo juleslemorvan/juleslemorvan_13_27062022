@@ -9,9 +9,10 @@ const reducer = combineReducers({
 });
 
 const middleware = [thunk];
+// middewar => permet d'appeler de dispatcher des actions a l'interieur d'autres actions
 
-const userLoginFromStorage = localStorage.getItem("userLogin")
-  ? JSON.parse(localStorage.getItem("userLogin"))
+const userLoginFromStorage = localStorage.getItem("userData")
+  ? JSON.parse(localStorage.getItem("userData"))
   : null;
 
 const initialeState = { userLogin: { userInfo: userLoginFromStorage } };
